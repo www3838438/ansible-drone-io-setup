@@ -1,0 +1,11 @@
+---
+  - name: add docker repository key
+    apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+
+  - name: add Docker repository
+    apt_repository:
+      repo: 'deb http://get.docker.com/ubuntu docker main'
+      update_cache: yes
+
+  - name: docker is installed
+    apt: name=lxc-docker state=installed update_cache=yes

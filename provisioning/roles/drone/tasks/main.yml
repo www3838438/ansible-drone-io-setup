@@ -1,0 +1,20 @@
+---
+  - name: download latest drone release
+    get_url: url=http://downloads.drone.io/master/drone.deb dest=/tmp/drone.deb
+
+  - name: install drone deb
+    apt: deb=/tmp/drone.deb state=installed
+
+  - name: ensure configuration is up to date
+    template: src=etc/drone/drone.toml.j2 dest=/etc/drone/drone.toml
+    tags:
+      - drone
+      
+  - name: ensure drone mysql user is present
+    mysql_user: name={{ m_user }} password={{ m_pass }} login_user=root login_password={{ m_root_pass }} priv="{{ m_name }}.*:ALL"
+
+  - name: ensure drone mysql database is present
+    mysql_db: name={{ m_name }} state=present
+
+  - name: ensure drone is started and enabled on boot
+    service: name=drone state=running enabled=yes

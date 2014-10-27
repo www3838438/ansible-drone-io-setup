@@ -1,0 +1,32 @@
+# Drone server configuration divided by sections
+
+# MySQL
+m_root_pass: "SomeRandomPass"
+
+m_user: "drone"
+m_pass: "drone"
+m_name: "drone"
+
+# server
+d_server_port: ":80"
+
+# session
+d_session_secret: "SomeRandom6712sZNhe12vGDsagd1"
+d_session_duration: "720h"
+
+# database
+d_database_driver: "mysql"
+d_database_datasource: "{{ m_user }}:{{ m_pass }}@tcp(127.0.0.1:3306)/{{ m_name }}"
+
+# registration
+d_registration_is_open: "false"
+
+# gitlab
+d_gitlab_url: "http://gitlab.url"
+
+# smtp settings these need to be configured
+d_smtp_host: ""
+d_smtp_port: ""
+d_smtp_from: ""
+d_smtp_user: ""
+d_smtp_pass: ""

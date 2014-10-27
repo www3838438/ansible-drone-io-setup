@@ -1,0 +1,71 @@
+[server]
+port="{{ d_server_port }}"
+
+#####################################################################
+# SSL configuration
+#
+# [server.ssl]
+# key=""
+# cert=""
+
+[session]
+secret="{{ d_session_secret }}"
+expires="{{ d_session_duration }}"
+
+#####################################################################
+# Database configuration, by default using SQLite3.
+# You can also use postgres and mysql. See the documentation
+# for more details.
+
+[database]
+driver="{{ d_database_driver }}"
+datasource="{{ d_database_datasource }}"
+
+#####################################################################
+# Open Registration allows users to self-register for Drone.
+# This is recommended if Drone is being hosted behind a
+# firewall.
+#
+# When false, the system admin will need to manually add
+# users to Drone through the admin screens.
+#
+[registration]
+open={{ d_registration_is_open }}
+
+# [github]
+# client=""
+# secret=""
+
+# [github_enterprise]
+# client=""
+# secret=""
+# api=""
+# url=""
+# private_mode=false
+
+# [bitbucket]
+# client=""
+# secret=""
+
+[gitlab]
+url="{{ d_gitlab_url }}"
+
+
+#####################################################################
+# SMTP configuration for Drone. This is required if you plan
+# to send email notifications for build statuses.
+#
+[smtp]
+host="{{ d_smtp_host }}"
+port="{{ d_smtp_port }}"
+from="{{ d_smtp_from }}"
+user="{{ d_smtp_user }}"
+pass="{{ d_smtp_pass }}"
+
+# [worker]
+# cert=""
+# key=""
+# nodes=[
+#   "unix:///var/run/docker.sock",
+#   "unix:///var/run/docker.sock"
+# ]
